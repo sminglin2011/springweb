@@ -25,7 +25,7 @@ public class TestService {
 	
 	public List getList() {
 		List list = null;
-		String sql = "select * from m03staff";
+		String sql = "select staffid, name from m03staff";
 		list = jdbcTemplate.queryForList(sql);
 		return list;
 	}
