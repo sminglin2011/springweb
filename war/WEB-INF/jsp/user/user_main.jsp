@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<%@ include file="/_meta.jsp" %>
+<%@ include file="/WEB-INF/jsp/_meta.jsp" %>
 <title>User Manager</title>
 </head>
 <body>
@@ -67,5 +67,5 @@
 	</table>
 </div>
 </body>
-<%@ include file="/_footer.jsp" %>
+<%@ include file="/WEB-INF/jsp/_footer.jsp" %>
 </html>

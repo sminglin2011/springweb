@@ -1,4 +1,3 @@
-<%@ include file="/WEB-INF/jsp/include.jsp" %>
 <meta charset="utf-8">
 <!--[if lt IE 9]>
 <script type="text/javascript" src="lib/html5.js"></script>
