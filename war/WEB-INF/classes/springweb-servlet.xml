@@ -18,9 +18,6 @@
 	<!-- 引入注解 -->
 	<context:annotation-config />
 
-
-	<!-- 配置事务控制 -->
-
 	<!-- if you use annotation you must configure following setting -->
 	<mvc:annotation-driven />
 

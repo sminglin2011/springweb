@@ -23,7 +23,7 @@ public class TestController {
 	private TestService testSrvice;
 
 	@ResponseBody
-	@RequestMapping(value="returnJSP.htm")
+	@RequestMapping(value="/returnJSP.htm")
 	public String returnJsp(String name) {
 //		JSONObject json = new JSONObject();
 //		Map<String, String> map = new HashMap<>();
@@ -31,7 +31,7 @@ public class TestController {
 //		List list = new ArrayList<>();
 //		list.a
 		testSrvice.getList();
-		testSrvice.saveTest();
+		//testSrvice.saveTest();
 		return "index";
 	}
 }
