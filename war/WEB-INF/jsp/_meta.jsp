@@ -14,3 +14,4 @@
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>

@@ -33,4 +33,10 @@ public class UserController {
 		log.debug("list = " + list);
 		return new ModelAndView("user/user_main_datatable", "list", list);
 	}
+	
+	@RequestMapping(value="/new_user.htm")
+	public ModelAndView new_user() {
+		
+		return new ModelAndView("user/new_user", "list", "");
+	}
 }
