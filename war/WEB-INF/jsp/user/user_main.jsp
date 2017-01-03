@@ -41,7 +41,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${list}" var="user" varStatus="status">
+			<c:forEach items="${model.list}" var="user" varStatus="status">
 			<tr class="text-c">
 				<td><input type="checkbox" value="1" name=""></td>
 				<td>${status.count}</td>

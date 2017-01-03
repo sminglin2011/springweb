@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="/WEB-INF/jsp/_meta.jsp" %>
-<title>index</title>
+<title>Food Solution</title>
 </head>
 <body>
 	<header class="navbar-wrapper">
@@ -44,35 +44,33 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i> 用户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="user_main.htm" data-title="用户管理" href="javascript:void(0)">用户管理</a></li>
-					<li><a data-href="user_main_datatable.htm" data-title="用户管理datatable" href="javascript:void(0)">用户管理datatable</a></li>
+					<li><a data-href="userMain.htm" data-title="用户管理datatable" href="javascript:void(0)">用户管理datatable</a></li>
 				</ul>
 			</dd>
 		</dl>
 		<dl id="menu-picture">
-			<dt><i class="Hui-iconfont">&#xe613;</i> 图片管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe613;</i> 销售订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="picture-list.html" data-title="图片管理" href="javascript:void(0)">图片管理</a></li>
+					<li><a data-href="order_main.htm" data-title="订单管理" href="javascript:void(0)">订单管理</a></li>
 				</ul>
 			</dd>
 		</dl>
 		<dl id="menu-product">
-			<dt><i class="Hui-iconfont">&#xe620;</i> 产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe620;</i> 库存管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="product-brand.html" data-title="品牌管理" href="javascript:void(0)">品牌管理</a></li>
-					<li><a data-href="product-category.html" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
-					<li><a data-href="product-list.html" data-title="产品管理" href="javascript:void(0)">产品管理</a></li>
+					<li><a data-href="stockMain.htm" data-title="库存管理" href="javascript:void(0)">库存管理</a></li>
+					<li><a data-href="product-category.html" data-title="库存分类管理" href="javascript:void(0)">库存分类管理</a></li>
+					<li><a data-href="menuMain.htm" data-title="菜单管理" href="javascript:void(0)">菜单管理</a></li>
 				</ul>
 			</dd>
 		</dl>
 		<dl id="menu-comments">
-			<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe622;</i> 客户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="http://h-ui.duoshuo.com/admin/" data-title="评论列表" href="javascript:;">评论列表</a></li>
-					<li><a data-href="feedback-list.html" data-title="意见反馈" href="javascript:void(0)">意见反馈</a></li>
+					<li><a data-href="customerMain.htm" data-title="客户列表" href="javascript:;">客户列表</a></li>
 				</ul>
 			</dd>
 		</dl>

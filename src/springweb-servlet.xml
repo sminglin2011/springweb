@@ -37,6 +37,6 @@
 	</bean>
 	
 	<!-- index -->
-    <bean name="/index.htm" class="com.web.controller.IndexController"></bean>
+    <bean name="/index.php" class="com.web.controller.IndexController"></bean>
 
 </beans>
