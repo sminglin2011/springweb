@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.swing.internal.plaf.metal.resources.metal;
 import com.web.domain.Customer;
+import com.web.exception.ParameterException;
 import com.web.service.CustomerService;
 
 @Controller
@@ -70,5 +72,46 @@ public class CustomerController extends BaseController{
 		}
 		// return "y" if correct return y
 		return "y";
+	}
+	@RequestMapping(value="/customerContactMaster.htm")
+	public ModelAndView customerContactMaster(String customerId) {
+		log.debug("customerContactMaster come " + customerId);
+		int custId = 0;
+		try {
+			custId = Integer.parseInt(customerId);
+		} catch (ParameterException e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			throw e;
+		}
+		
+		List billContactList = customerService.loadCustomerBillContactList(custId);
+		List deliveryContactList = customerService.loadCustomerDeliveryContactList(custId);
+		Customer customer = customerService.loadCustomer(customerId);
+		Map model = new HashMap<>();
+		model.put("billContactList", billContactList);
+		model.put("deliveryContactList", deliveryContactList);
+		model.put("customer", customer);
+		log.debug(billContactList);
+		log.debug(deliveryContactList);
+		log.debug(customer);
+		
+		return new ModelAndView("customer/contact_main","model", model);
+	}
+	
+	@RequestMapping(value="/newCustomerBillContact.htm")
+	public ModelAndView newCustomerBillContact(String customerId) {
+		log.debug("new Customer Bill contact customer id = " + customerId);
+		Map model = new HashMap<>();
+		Customer customer = customerService.loadCustomer(customerId);
+		model.put("customer", customer);
+		return new ModelAndView("customer/new_customerBillContact", "model", model);
+	}
+	@RequestMapping(value="/newCustomerDeliveryContact.htm")
+	public ModelAndView newCustomerDeliveryContact(String customerId) {
+		Map model = new HashMap<>();
+		Customer customer = customerService.loadCustomer(customerId);
+		model.put("customer", customer);
+		return new ModelAndView("customer/new_customerDeliveryContact", "model", model);
 	}
 }

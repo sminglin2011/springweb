@@ -14,6 +14,7 @@ import com.web.domain.Customer;
 import com.web.domain.CustomerBillContact;
 import com.web.domain.CustomerDeliveryContact;
 import com.web.exception.BusinessException;
+import com.web.exception.ParameterException;
 
 @Service
 public class CustomerService {
@@ -33,7 +34,7 @@ public class CustomerService {
 		if (id != null && !id.equals("0")) {
 			try {
 				customer = customerDao.fetchCustomer(Integer.parseInt(id));
-			} catch (Exception e) {
+			} catch (ParameterException e) {
 				throw e;
 			}
 		}
