@@ -1,1 +1,7 @@
+/.DS_Store
+/applicationContext.xml
 /com/
+/locale.properties
+/locale_zh_CN.properties
+/log4j.properties
+/springweb-servlet.xml

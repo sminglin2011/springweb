@@ -45,6 +45,7 @@ public class CustomerController extends BaseController{
 			customer = customerService.saveCustomer(customer);
 		} catch (Exception e) {
 			log.error(e.getMessage());
+			e.printStackTrace();
 		}
 		
 		customerService.updateCustomerBillContact(customer.getBillContact());
