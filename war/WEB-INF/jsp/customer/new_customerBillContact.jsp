@@ -17,29 +17,24 @@
 	<div class="page-container">
 		<form action="saveCustomerBillContact.htm" method="post" class="form form-horizontal responsive" id="form-billContact">
 	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>Customer Name：</label>
 		<div class="formControls col-xs-8 col-sm-6">
-			<input type="text" class="input-text" placeholder="" id="username" name="username">
+			<input type="text" class="input-text" placeholder="" id="customerName" name="customerName">
 		</div>
 	</div>
 	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>初始密码：</label>
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>billAttention：</label>
 		<div class="formControls col-xs-8 col-sm-6">
-			<input type="password" class="input-text" autocomplete="off" placeholder="密码" id="password" name="password">
+			<input type="text" class="input-text" autocomplete="off" placeholder="billAttention" id="billAttention" name="billAttention">
 		</div>
 	</div>
 	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>确认密码：</label>
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>billTelephone：</label>
 		<div class="formControls col-xs-8 col-sm-6">
-			<input type="password" class="input-text" autocomplete="off"  placeholder="确认新密码" id="password2" name="password2">
+			<input type="text" class="input-text" autocomplete="off"  placeholder="billTelephone" id="billTelephone" name="billTelephone">
 		</div>
 	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱：</label>
-		<div class="formControls col-xs-8 col-sm-6">
-			<input type="text" class="input-text" placeholder="@" name="email" id="email">
-		</div>
-	</div>
+	
 	<div class="row cl">
 		<div class="col-xs-8 col-sm-6 col-xs-offset-4 col-sm-offset-3">
 			<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">

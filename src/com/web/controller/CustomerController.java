@@ -124,7 +124,7 @@ public class CustomerController { //extends BaseController
 	}
 	@ResponseBody
 	@RequestMapping(value="/saveCustomerBillContact.htm")
-	public String saveCustomerBillContact(User us) {
+	public String saveCustomerBillContact(CustomerBillContact us) {
 		log.debug("save bill contact + ????" + us);
 //		try {
 //			log.debug("saveCustomerBillContact.htm ===" + "333333333333333" + req.getParameter("billAttention"));
