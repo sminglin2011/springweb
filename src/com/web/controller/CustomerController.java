@@ -1,5 +1,6 @@
 package com.web.controller;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,12 +15,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sun.swing.internal.plaf.metal.resources.metal;
+import com.web.Dao.CustomerDao;
 import com.web.domain.Customer;
+import com.web.domain.CustomerBillContact;
+import com.web.domain.User;
 import com.web.exception.ParameterException;
 import com.web.service.CustomerService;
 
+import net.sf.json.JSON;
+
 @Controller
-public class CustomerController extends BaseController{
+public class CustomerController { //extends BaseController
 	
 	Logger log = Logger.getLogger(CustomerController.class);
 
@@ -73,6 +79,7 @@ public class CustomerController extends BaseController{
 		// return "y" if correct return y
 		return "y";
 	}
+	
 	@RequestMapping(value="/customerContactMaster.htm")
 	public ModelAndView customerContactMaster(String customerId) {
 		log.debug("customerContactMaster come " + customerId);
@@ -109,9 +116,25 @@ public class CustomerController extends BaseController{
 	}
 	@RequestMapping(value="/newCustomerDeliveryContact.htm")
 	public ModelAndView newCustomerDeliveryContact(String customerId) {
+		log.debug("??????????");
 		Map model = new HashMap<>();
 		Customer customer = customerService.loadCustomer(customerId);
 		model.put("customer", customer);
 		return new ModelAndView("customer/new_customerDeliveryContact", "model", model);
+	}
+	@ResponseBody
+	@RequestMapping(value="/saveCustomerBillContact.htm")
+	public String saveCustomerBillContact(User us) {
+		log.debug("save bill contact + ????" + us);
+//		try {
+//			log.debug("saveCustomerBillContact.htm ===" + "333333333333333" + req.getParameter("billAttention"));
+////			customerService.saveCustomerBillContact(billContact);
+//			//pw.write("{'status':'y', 'ino':'billcontact'}");
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//		}
+		
+		return "{status:'y'}";
 	}
 }

@@ -98,13 +98,12 @@
 			"p":"请填写邮政编码！",
 			"m":"请填写手机号码！",
 			"e":"邮箱地址格式不对！",
-			"url":"请填写网址！",
-			"idcard":"身份证格式不正确！"
+			"url":"请填写网址！"
 		},
 		def:"请填写正确信息！",
 		undef:"datatype未定义！",
 		reck:"两次输入的内容不一致！",
-		r:"",
+		r:"通过信息验证！",
 		c:"正在检测信息…",
 		s:"请{填写|选择}{0|信息}！",
 		v:"所填信息没有经过验证，请稍后…",
@@ -201,10 +200,9 @@
 			"s":/^[\u4E00-\u9FA5\uf900-\ufa2d\w\.\s]+$/,
 			"s6-18":/^[\u4E00-\u9FA5\uf900-\ufa2d\w\.\s]{6,18}$/,
 			"p":/^[0-9]{6}$/,
-			"m":/^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}|17[0-9]{9}$/,
+			"m":/^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/,
 			"e":/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
-			"url":/^(\w+:\/\/)?\w+(\.\w+)+.*$/,
-			"idcard":/^\d{15}(\d{2}[A-Za-z0-9])?$/
+			"url":/^(\w+:\/\/)?\w+(\.\w+)+.*$/
 		},
 		
 		toString:Object.prototype.toString,
@@ -240,15 +238,14 @@
 			//页面上不存在提示信息的标签时，自动创建;
 			curform.find("[datatype]").each(function(){
 				if(tiptype==2){
-					if($(this).parents(".formControls").next().find(".Validform_checktip").length==0){
-						$(this).parents(".formControls").next().append("<span class='Validform_checktip' />");
+					if($(this).parent().next().find(".Validform_checktip").length==0){
+						$(this).parent().next().append("<span class='Validform_checktip' />");
 						$(this).siblings(".Validform_checktip").remove();
 					}
 				}else if(tiptype==3 || tiptype==4){
 					if($(this).siblings(".Validform_checktip").length==0){
 						$(this).parent().append("<span class='Validform_checktip' />");
 						$(this).parent().next().find(".Validform_checktip").remove();
-						$(this).parents(".formControls").next().find(".Validform_checktip").remove();
 					}
 				}
 			})
@@ -710,8 +707,8 @@
 			}
 
 			if(type==2 && o.obj){
-				o.obj.parents(".formControls").next().find(".Validform_checktip").html(msg);
-				Validform.util.cssctl(o.obj.parents(".formControls").next().find(".Validform_checktip"),o.type);
+				o.obj.parent().next().find(".Validform_checktip").html(msg);
+				Validform.util.cssctl(o.obj.parent().next().find(".Validform_checktip"),o.type);
 			}
 			
 			if((type==3 || type==4) && o.obj){

@@ -51,7 +51,8 @@
 						<tr class="text-c">
 							<td><input type="checkbox" value="" name=""></td>
 							<td>${status.count }</td>
-							<td><a onclick="loadPage('customerContactMaster.htm?customerId=${customer.id}')">${customer.name }</a></td>
+							<td><a href="javascript:;" class="btn btn-link radius" 
+								onclick="loadPage('customerContactMaster.htm?customerId=${customer.id}')">${customer.name }</a></td>
 							<td class="f-14 td-manage"><a style="text-decoration: none" class="ml-5"
 								onClick="user_edit('用户编辑','editUser.htm?id=${customer.id}','800','520')"
 								href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>

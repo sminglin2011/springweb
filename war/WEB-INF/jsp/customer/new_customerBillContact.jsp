@@ -11,96 +11,69 @@
 	content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <%@ include file="/WEB-INF/jsp/_meta.jsp"%>
-<title>Customer Details</title>
+<title></title>
 </head>
 <body>
 	<div class="page-container">
 		<form action="saveCustomerBillContact.htm" method="post" class="form form-horizontal responsive" id="form-billContact">
-		<div class="row cl">
-			<label class="form-label col-xs-6">Customer Name：${model.customer.name }</label>
-			<div class="formControls col-xs-3">
-				
-				<input type="hidden" id="id" name="id">
-				<input type="hidden" id="customerId" name="customerId">
-			</div>
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
+		<div class="formControls col-xs-8 col-sm-6">
+			<input type="text" class="input-text" placeholder="" id="username" name="username">
 		</div>
-		<h4>Billing Information</h4>
-		<div class="line"></div>
-		<p/>
-		<div class="row cl">
-			<label class="form-label col-xs-3">Billing Attention：</label>
-			<div class="formControls col-xs-3">
-				<input type="text" class="input-text" placeholder="Billing Attention" name="billContact.billAttention" id="billAttention" datatype="*3-50" ignore="ignore">
-			</div>
-			<label class="form-label col-xs-3">Billing Email：</label>
-			<div class="formControls col-xs-3">
-				<input type="text" class="input-text" placeholder="Billing Email" name="billContact.billEmail" id="billEmail" datatype="e" ignore="ignore">
-			</div>
+	</div>
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>初始密码：</label>
+		<div class="formControls col-xs-8 col-sm-6">
+			<input type="password" class="input-text" autocomplete="off" placeholder="密码" id="password" name="password">
 		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-3">Billing Mobile：</label>
-			<div class="formControls col-xs-3">
-				<input type="text" class="input-text" placeholder="Billing Mobile" name="billContact.billMobile" id="billMobile" datatype="n" ignore="ignore">
-			</div>
-			<label class="form-label col-xs-3">Billing Telephone：</label>
-			<div class="formControls col-xs-3">
-				<input type="text" class="input-text" placeholder="Billing Telephone" name="billContact.billTelephone" id="billTelephone" datatype="n" ignore="ignore">
-			</div>
+	</div>
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>确认密码：</label>
+		<div class="formControls col-xs-8 col-sm-6">
+			<input type="password" class="input-text" autocomplete="off"  placeholder="确认新密码" id="password2" name="password2">
 		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-3">Billing PostCode：</label>
-			<div class="formControls col-xs-3">
-				<input type="text" class="input-text" placeholder="Billing PostCode" name="billContact.billPostcode" id="billPostcode" datatype="n6-6" ignore="ignore">
-			</div>
-			<label class="form-label col-xs-3">Billing Fax：</label>
-			<div class="formControls col-xs-3">
-				<input type="text" class="input-text" placeholder="Billing Fax" name="billContact.billFax" id="billFax" datatype="n" ignore="ignore">
-			</div>
+	</div>
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱：</label>
+		<div class="formControls col-xs-8 col-sm-6">
+			<input type="text" class="input-text" placeholder="@" name="email" id="email">
 		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-3">Billing Address：</label>
-			<div class="formControls col-xs-6">
-				<input type="text" class="input-text" placeholder="Billing Address1" name="billContact.billAddress1" id="billAddress1" datatype="*3-50" ignore="ignore">
-			</div>
+	</div>
+	<div class="row cl">
+		<div class="col-xs-8 col-sm-6 col-xs-offset-4 col-sm-offset-3">
+			<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
 		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-3"></label>
-			<div class="formControls col-xs-6">
-				<input type="text" class="input-text" placeholder="Billing Address2" name="billContact.billAddress2" id="billAddress2">
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-3"></label>
-			<div class="formControls col-xs-6">
-				<input type="text" class="input-text" placeholder="Billing Address" name="billContact.billAddress3" id="billAddress3">
-			</div>
-		</div>
-		<div class="row cl">
-			<div class="col-xs-10 col-xs-offset-2">
-				<button name="" id="" class="btn btn-success" type="submit">
-					<i class="Hui-iconfont">&#xe632;</i> 保存
-				</button>
-			</div>
-		</div>
-		</form>
+	</div>
+	</form>
 	</div>
 </body>
 <%@ include file="/WEB-INF/jsp/_footer.jsp"%>
-<script type="text/javascript" src="lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="lib/Validform/5.3.2/Validform.js"></script>
 <script type="text/javascript">
 $(function(){
-	$("#form-customer").Validform({
+	//方法一;
+	$("#form-billContact").Validform({
 		tiptype:3,
-		ajaxPost:true,
-		callback:function(data){
-			//form[0].submit(); 直接提交表单
-			//ajaxPost(flag,sync,url); flag = true 跳过验证直接提交表单， sync = true 同步提交
-			layer.msg(data.status);
-			/* var index = parent.layer.getFrameIndex(window.name);
-			parent.location.replace(parent.location.href)
-			parent.layer.close(index); */
-		}
-	});
+		beforeSubmit:function(curform){
+			//在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+			//这里明确return false的话表单将不会提交;	
+			console.log("ddd",$(curform).serialize());
+			$.ajax({
+				  method: "POST",
+				  url: "saveCustomerBillContact.htm?"+$(curform).serialize(),
+				}).done(function( data ) {
+				    //alert( "Data Saved: " + msg );
+				    //$(obj).parents("tr").remove();
+				    console.log(data, "111111");
+				    layer.msg(data);
+				}).fail(function() {
+				    //alert( "error" );
+					layer.msg('出错!');
+				 });
+			return false;
+		},
+	}); 
 });
 
 </script>
