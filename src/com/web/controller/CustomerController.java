@@ -10,9 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
 import com.sun.swing.internal.plaf.metal.resources.metal;
 import com.web.Dao.CustomerDao;
@@ -23,6 +27,7 @@ import com.web.exception.ParameterException;
 import com.web.service.CustomerService;
 
 import net.sf.json.JSON;
+import net.sf.json.JSONObject;
 
 @Controller
 public class CustomerController { //extends BaseController
@@ -112,6 +117,7 @@ public class CustomerController { //extends BaseController
 		Map model = new HashMap<>();
 		Customer customer = customerService.loadCustomer(customerId);
 		model.put("customer", customer);
+		model.put("billContact", new CustomerBillContact());
 		return new ModelAndView("customer/new_customerBillContact", "model", model);
 	}
 	@RequestMapping(value="/newCustomerDeliveryContact.htm")
@@ -122,10 +128,11 @@ public class CustomerController { //extends BaseController
 		model.put("customer", customer);
 		return new ModelAndView("customer/new_customerDeliveryContact", "model", model);
 	}
-	@ResponseBody
-	@RequestMapping(value="/saveCustomerBillContact.htm")
-	public String saveCustomerBillContact(CustomerBillContact us) {
-		log.debug("save bill contact + ????" + us);
+	
+	@RequestMapping(value="/saveCustomerBillContact.htm", consumes = "application/json")
+	public JSONObject saveCustomerBillContact(ModelMap model,@RequestBody CustomerBillContact us) {
+		log.debug("model  =" + model);
+		log.debug(" <save bill contact + ????" + us);
 //		try {
 //			log.debug("saveCustomerBillContact.htm ===" + "333333333333333" + req.getParameter("billAttention"));
 ////			customerService.saveCustomerBillContact(billContact);
@@ -134,7 +141,10 @@ public class CustomerController { //extends BaseController
 //			// TODO: handle exception
 //			e.printStackTrace();
 //		}
+		System.out.println(us.getBillAttention());
+        JSONObject jsonObject = JSONObject.fromObject("{\"status\":\"y\"}");
+        return jsonObject;
 		
-		return "{status:'y'}";
+		//return "{status:'y'}";
 	}
 }

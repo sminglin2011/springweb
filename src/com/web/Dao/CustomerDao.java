@@ -137,7 +137,7 @@ public class CustomerDao {
 				billContact.setBillAddress1(rs.getString("billAddress1"));
 				billContact.setBillAddress2(rs.getString("billAddress2"));
 				billContact.setBillAddress3(rs.getString("billAddress3"));
-				billContact.setBillPostcode(rs.getInt("billPostcode"));
+				billContact.setBillPostcode(rs.getString("billPostcode"));
 				return billContact;
 			}
 		};
@@ -157,7 +157,7 @@ public class CustomerDao {
 		log.debug("doo save bill contact sql = " + sql);
 		int i = 0;
 		try {
-			i = jdbcTemplate.update(sql, null, billContact.getBillAttention(), billContact.getBillTelephone()
+			i = jdbcTemplate.update(sql, billContact.getCustomerId(), billContact.getBillAttention(), billContact.getBillTelephone()
 					, billContact.getBillMobile(), billContact.getBillEmail(), billContact.getBillFax(), billContact.getBillAddress1()
 					, billContact.getBillAddress2(), billContact.getBillAddress3(), billContact.getBillPostcode());
 		} catch (DataAccessException e) {

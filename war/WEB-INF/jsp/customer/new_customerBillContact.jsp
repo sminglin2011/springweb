@@ -15,32 +15,75 @@
 </head>
 <body>
 	<div class="page-container">
-		<form action="saveCustomerBillContact.htm" method="post" class="form form-horizontal responsive" id="form-billContact">
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>Customer Name：</label>
-		<div class="formControls col-xs-8 col-sm-6">
-			<input type="text" class="input-text" placeholder="" id="customerName" name="customerName">
+	<form action="saveCustomerBillContact.htm" method="post" class="form form-horizontal responsive" id="form-billContact">
+		<div class="row cl">
+			<label class="form-label col-xs-6">Customer Name：${model.customer.name}</label>
+			<div class="formControls col-xs-1">
+				<input type="hidden" id="id" name="id" value="${model.billContact.id}">
+				<input type="hidden" id="customerId" name="customerId" value="${model.customer.id}">
+			</div>
 		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>billAttention：</label>
-		<div class="formControls col-xs-8 col-sm-6">
-			<input type="text" class="input-text" autocomplete="off" placeholder="billAttention" id="billAttention" name="billAttention">
+		<h4>Bill Information</h4>
+		<div class="line"></div>
+		<p/>
+		<div class="row cl">
+			<label class="form-label col-xs-3">Bill Attention：</label>
+			<div class="formControls col-xs-3">
+				<input type="text" class="input-text" placeholder="Bill Attention" name="billAttention" id="billAttention" 
+					datatype="*3-50" ignore="ignore">
+			</div>
+			<label class="form-label col-xs-3">Bill Email：</label>
+			<div class="formControls col-xs-3">
+				<input type="text" class="input-text" placeholder="Bill Email" name="billEmail" id="billEmail" 
+				datatype="e" ignore="ignore">
+			</div>
 		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>billTelephone：</label>
-		<div class="formControls col-xs-8 col-sm-6">
-			<input type="text" class="input-text" autocomplete="off"  placeholder="billTelephone" id="billTelephone" name="billTelephone">
+		<div class="row cl">
+			<label class="form-label col-xs-3">Bill Mobile：</label>
+			<div class="formControls col-xs-3">
+				<input type="text" class="input-text" placeholder="Bill Mobile" name="billMobile" id="billMobile" 
+					datatype="n" ignore="ignore">
+			</div>
+			<label class="form-label col-xs-3">Bill Telephone：</label>
+			<div class="formControls col-xs-3">
+				<input type="text" class="input-text" placeholder="Bill Telephone" name="billTelephone" id="billTelephone" 
+					datatype="n" ignore="ignore">
+			</div>
 		</div>
-	</div>
-	
-	<div class="row cl">
-		<div class="col-xs-8 col-sm-6 col-xs-offset-4 col-sm-offset-3">
-			<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+		<div class="row cl">
+			<label class="form-label col-xs-3">Bill PostCode：</label>
+			<div class="formControls col-xs-3">
+				<input type="text" class="input-text" placeholder="Bill PostCode" name="billPostcode" id="billPostcode" 
+					datatype="n6-6" ignore="ignore" value="${model.billContact.billPostcode}">
+			</div>
 		</div>
-	</div>
-	</form>
+		<div class="row cl">
+			<label class="form-label col-xs-3">Bill Address：</label>
+			<div class="formControls col-xs-6">
+				<input type="text" class="input-text" placeholder="Bill Address1" name="billAddress1" id="billAddress1" 
+					datatype="*3-50" ignore="ignore">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-3"></label>
+			<div class="formControls col-xs-6">
+				<input type="text" class="input-text" placeholder="Bill Address2" name="billAddress2" id="billAddress2">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-3"></label>
+			<div class="formControls col-xs-6">
+				<input type="text" class="input-text" placeholder="Bill Address3" name="billAddress3" id="billAddress3">
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-10 col-xs-offset-2">
+				<button name="" id="" class="btn btn-success" type="submit">
+					<i class="Hui-iconfont">&#xe632;</i> 保存
+				</button>
+			</div>
+		</div>
+		</form>
 	</div>
 </body>
 <%@ include file="/WEB-INF/jsp/_footer.jsp"%>
@@ -52,20 +95,23 @@ $(function(){
 		tiptype:3,
 		beforeSubmit:function(curform){
 			//在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
-			//这里明确return false的话表单将不会提交;	
-			console.log("ddd",$(curform).serialize());
+			
+			var param = $(curform).serialize();
+			console.log("ddd",JSON.stringify(param)); //serializeArray
 			$.ajax({
-				  method: "POST",
-				  url: "saveCustomerBillContact.htm?"+$(curform).serialize(),
-				}).done(function( data ) {
-				    //alert( "Data Saved: " + msg );
-				    //$(obj).parents("tr").remove();
-				    console.log(data, "111111");
-				    layer.msg(data);
-				}).fail(function() {
-				    //alert( "error" );
-					layer.msg('出错!');
-				 });
+			    url:"saveCustomerBillContact.htm",
+			    type:"post",
+			    dataType:"json",
+			    data:JSON.stringify(param),
+			    dataType:"json",
+			    contentType:"application/json",
+			    success:function(data){
+			    	console.log(data, "succcess");
+			    },error:function(data){
+			    	console.log(data, "error");
+			    }
+			});
+			//这里明确return false的话表单将不会提交;	
 			return false;
 		},
 	}); 

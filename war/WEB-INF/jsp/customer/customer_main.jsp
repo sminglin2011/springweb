@@ -99,7 +99,6 @@
 	}
 	
 	function loadPage(url){
-		console.log("load!!!!!!!!!");
 		location.replace(url)
 	}
 </script>
