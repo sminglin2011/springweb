@@ -91,7 +91,7 @@
 <script type="text/javascript">
 $(function(){
 	//方法一;
-	$("#form-billContact").Validform({
+	/*$("#form-billContact").Validform({
 		tiptype:3,
 		beforeSubmit:function(curform){
 			//在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
@@ -114,7 +114,18 @@ $(function(){
 			//这里明确return false的话表单将不会提交;	
 			return false;
 		},
-	}); 
+	}); */
+	
+	$("#form-billContact").Validform({
+		//tiptype:3,
+		ajaxPost:true,
+		callback:function(data){
+			console.log("log", data.status);
+			/*var index = parent.layer.getFrameIndex(window.name);
+			parent.location.replace(parent.location.href)
+			parent.layer.close(index);*/
+		}
+	});
 });
 
 </script>

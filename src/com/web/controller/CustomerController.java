@@ -128,9 +128,9 @@ public class CustomerController { //extends BaseController
 		model.put("customer", customer);
 		return new ModelAndView("customer/new_customerDeliveryContact", "model", model);
 	}
-	
-	@RequestMapping(value="/saveCustomerBillContact.htm", consumes = "application/json")
-	public JSONObject saveCustomerBillContact(ModelMap model,@RequestBody CustomerBillContact us) {
+	@ResponseBody
+	@RequestMapping(value="/saveCustomerBillContact.htm") //, consumes = "application/json"
+	public String saveCustomerBillContact(ModelMap model,CustomerBillContact us) {
 		log.debug("model  =" + model);
 		log.debug(" <save bill contact + ????" + us);
 //		try {
@@ -142,9 +142,9 @@ public class CustomerController { //extends BaseController
 //			e.printStackTrace();
 //		}
 		System.out.println(us.getBillAttention());
-        JSONObject jsonObject = JSONObject.fromObject("{\"status\":\"y\"}");
-        return jsonObject;
+//        JSONObject jsonObject = JSONObject.fromObject("{\"status\":\"y\"}");
+//        return jsonObject;
 		
-		//return "{status:'y'}";
+		return "{status:'y'}";
 	}
 }
