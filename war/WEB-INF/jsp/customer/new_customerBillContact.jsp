@@ -30,38 +30,38 @@
 			<label class="form-label col-xs-3">Bill Attention：</label>
 			<div class="formControls col-xs-3">
 				<input type="text" class="input-text" placeholder="Bill Attention" name="billAttention" id="billAttention" 
-					datatype="*3-50" ignore="ignore">
+					datatype="*3-18" nullmsg="Not Empty!" errormsg="3 to 18 Characters!" sucmsg="Success">
 			</div>
 			<label class="form-label col-xs-3">Bill Email：</label>
 			<div class="formControls col-xs-3">
 				<input type="text" class="input-text" placeholder="Bill Email" name="billEmail" id="billEmail" 
-				datatype="e" ignore="ignore">
+				datatype="e" ignore="ignore" errormsg="Email Address Incorect!" sucmsg="Success">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-3">Bill Mobile：</label>
 			<div class="formControls col-xs-3">
 				<input type="text" class="input-text" placeholder="Bill Mobile" name="billMobile" id="billMobile" 
-					datatype="n" ignore="ignore">
+					datatype="n8-8" ignore="ignore" errormsg="eg.66668888" sucmsg="Success">
 			</div>
 			<label class="form-label col-xs-3">Bill Telephone：</label>
 			<div class="formControls col-xs-3">
 				<input type="text" class="input-text" placeholder="Bill Telephone" name="billTelephone" id="billTelephone" 
-					datatype="n" ignore="ignore">
+					datatype="n8-8" ignore="ignore" errormsg="eg.66668888" sucmsg="Success">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-3">Bill PostCode：</label>
 			<div class="formControls col-xs-3">
 				<input type="text" class="input-text" placeholder="Bill PostCode" name="billPostcode" id="billPostcode" 
-					datatype="n6-6" ignore="ignore" value="${model.billContact.billPostcode}">
+					datatype="n6-6" ignore="ignore" value="${model.billContact.billPostcode}" nullmsg="Not Empty!" errormsg="eg.600116" sucmsg="Success">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-3">Bill Address：</label>
 			<div class="formControls col-xs-6">
 				<input type="text" class="input-text" placeholder="Bill Address1" name="billAddress1" id="billAddress1" 
-					datatype="*3-50" ignore="ignore">
+					datatype="*3-50" ignore="ignore" errormsg="3 to 50 Characters!" sucmsg="Success">
 			</div>
 		</div>
 		<div class="row cl">
@@ -88,45 +88,64 @@
 </body>
 <%@ include file="/WEB-INF/jsp/_footer.jsp"%>
 <script type="text/javascript" src="lib/Validform/5.3.2/Validform.js"></script>
+<script type="text/javascript" src="lib/Validform/5.3.2/message.js"></script>
 <script type="text/javascript">
 $(function(){
+
 	//方法一;
-	/*$("#form-billContact").Validform({
-		tiptype:3,
-		beforeSubmit:function(curform){
-			//在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
-			
-			var param = $(curform).serialize();
-			console.log("ddd",JSON.stringify(param)); //serializeArray
-			$.ajax({
-			    url:"saveCustomerBillContact.htm",
-			    type:"post",
-			    dataType:"json",
-			    data:JSON.stringify(param),
-			    dataType:"json",
-			    contentType:"application/json",
-			    success:function(data){
-			    	console.log(data, "succcess");
-			    },error:function(data){
-			    	console.log(data, "error");
-			    }
-			});
-			//这里明确return false的话表单将不会提交;	
-			return false;
-		},
-	}); */
-	
 	$("#form-billContact").Validform({
-		//tiptype:3,
+		tiptype:3,
 		ajaxPost:true,
+		datatype:{//传入自定义datatype类型，可以是正则，也可以是函数（函数内会传入一个参数）;
+			"*6-20": /^[^\s]{6,20}$/,
+			"z2-4" : /^[\u4E00-\u9FA5\uf900-\ufa2d]{2,4}$/,
+			"username":function(gets,obj,curform,regxp){
+				//参数gets是获取到的表单元素值，obj为当前表单元素，curform为当前验证的表单，regxp为内置的一些正则表达式的引用;
+				var reg1=/^[\w\.]{4,16}$/,
+					reg2=/^[\u4E00-\u9FA5\uf900-\ufa2d]{2,8}$/;
+				
+				if(reg1.test(gets)){return true;}
+				if(reg2.test(gets)){return true;}
+				return false;
+				
+				//注意return可以返回true 或 false 或 字符串文字，true表示验证通过，返回字符串表示验证失败，字符串作为错误提示显示，返回false则用errmsg或默认的错误提示;
+			},
+			"phone":function(){
+				// 5.0 版本之后，要实现二选一的验证效果，datatype 的名称 不 需要以 "option_" 开头;	
+			}
+		},
 		callback:function(data){
-			console.log("log", data.status);
+			console.log("log data=", data);
+			console.log("log", data.responseText);
 			/*var index = parent.layer.getFrameIndex(window.name);
 			parent.location.replace(parent.location.href)
 			parent.layer.close(index);*/
 		}
 	});
+	
 });
-
+$.Tipmsg={//默认提示文字;
+		tit:"MESSAGE",
+		w:{
+		    "*":"NOT EMPTY!",
+		    "*6-16":"Please fill in any characters from 6 to 16 digits!",
+		    "n":"Please fill in the numbers!",
+		    "n6-16":"Please enter number 6 to 16 digits!",
+		    "s":"You can not enter special characters!",
+		    "s6-18":"Please enter characters 6 to 18 characters!",
+		    "p":"Please fill in the postal code!",
+		    "m":"please fill in cell phone number!",
+		    "e":"The mailbox address is not in the correct format!",
+		    "url":"Please fill in the URL!"
+		},
+		def:"Please fill in the correct information!",
+		undef:"datatype undefined!",
+		reck:"The content entered twice is inconsistent!",
+		r:"Through information validation!",
+		c:"Detecting information......",
+		s:"Please {FILLIN|SELECT}{0|INFORMATION}!",
+		v:"The information has not been verified, please wait ...",
+		p:"Submitting data ..."
+};
 </script>
 </html>

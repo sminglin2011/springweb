@@ -16,5 +16,5 @@ public class CustomerBillContact {
 	private String billAddress1;
 	private String billAddress2;
 	private String billAddress3;
-	private String billPostcode;
+	private int billPostcode;
 }

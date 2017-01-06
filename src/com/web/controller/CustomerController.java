@@ -130,21 +130,14 @@ public class CustomerController { //extends BaseController
 	}
 	@ResponseBody
 	@RequestMapping(value="/saveCustomerBillContact.htm") //, consumes = "application/json"
-	public String saveCustomerBillContact(ModelMap model,CustomerBillContact us) {
+	public String saveCustomerBillContact(ModelMap model,CustomerBillContact billContact) {
 		log.debug("model  =" + model);
-		log.debug(" <save bill contact + ????" + us);
-//		try {
-//			log.debug("saveCustomerBillContact.htm ===" + "333333333333333" + req.getParameter("billAttention"));
-////			customerService.saveCustomerBillContact(billContact);
-//			//pw.write("{'status':'y', 'ino':'billcontact'}");
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.printStackTrace();
-//		}
-		System.out.println(us.getBillAttention());
-//        JSONObject jsonObject = JSONObject.fromObject("{\"status\":\"y\"}");
-//        return jsonObject;
-		
-		return "{status:'y'}";
+		log.debug(" <save bill contact + ????" + billContact);
+		try {
+			customerService.saveCustomerBillContact(billContact);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "shuiming";
 	}
 }

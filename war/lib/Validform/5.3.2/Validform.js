@@ -87,27 +87,27 @@
 		msghidden=true;//msgbox hidden?
 
 	var tipmsg={//默认提示文字;
-		tit:"提示信息",
-		w:{
-			"*":"不能为空！",
-			"*6-16":"请填写6到16位任意字符！",
-			"n":"请填写数字！",
-			"n6-16":"请填写6到16位数字！",
-			"s":"不能输入特殊字符！",
-			"s6-18":"请填写6到18位字符！",
-			"p":"请填写邮政编码！",
-			"m":"请填写手机号码！",
-			"e":"邮箱地址格式不对！",
-			"url":"请填写网址！"
-		},
-		def:"请填写正确信息！",
-		undef:"datatype未定义！",
-		reck:"两次输入的内容不一致！",
-		r:"通过信息验证！",
-		c:"正在检测信息…",
-		s:"请{填写|选择}{0|信息}！",
-		v:"所填信息没有经过验证，请稍后…",
-		p:"正在提交数据…"
+			tit:"MESSAGE",
+			w:{
+			    "*":"NOT EMPTY！",
+			    "*6-16":"Please fill in any characters from 6 to 16 digits！",
+			    "n":"Please fill in the numbers！",
+			    "n6-16":"Please enter number 6 to 16 digits！",
+			    "s":"You can not enter special characters！",
+			    "s6-18":"Please enter characters 6 to 18 characters！",
+			    "p":"Please fill in the postal code！",
+			    "m":"please fill in cell phone number！",
+			    "e":"The mailbox address is not in the correct format！",
+			    "url":"Please fill in the URL！"
+			},
+			def:"Please fill in the correct information！",
+			undef:"datatype undefined！",
+			reck:"The content entered twice is inconsistent！",
+			r:"Through information validation！",
+			c:"Detecting information......",
+			s:"Please {FILL IN | SELECT} {0 | INFORMATION}！",
+			v:"The information has not been verified, please wait ...",
+			p:"Submitting data ..."
 	}
 	$.Tipmsg=tipmsg;
 	

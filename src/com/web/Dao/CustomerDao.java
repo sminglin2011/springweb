@@ -137,7 +137,7 @@ public class CustomerDao {
 				billContact.setBillAddress1(rs.getString("billAddress1"));
 				billContact.setBillAddress2(rs.getString("billAddress2"));
 				billContact.setBillAddress3(rs.getString("billAddress3"));
-				billContact.setBillPostcode(rs.getString("billPostcode"));
+				billContact.setBillPostcode(rs.getInt("billPostcode"));
 				return billContact;
 			}
 		};
